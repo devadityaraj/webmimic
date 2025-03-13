@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebMimic - Hackathon Rules</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary: #10b981;
+            --accent: #f43f5e;
+            --dark: #0f172a;
+            --darker: #020617;
+            --light: #f8fafc;
+            --gray: #64748b;
+            --glass: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--darker) 0%, var(--dark) 100%);
+            color: var(--light);
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            z-index: 100;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .header-logo {
+            width: 70px;
+            height: 40px;
+        }
+
+        .header-title {
+            font-weight: 700;
+            font-size: 1.5rem;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .header-right .btn {
+            background: linear-gradient(90deg, var(--primary) 0%, var(--primary-dark) 100%);
+        }
+
+        .bg-logo {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            max-width: 900px;
+            opacity: 0.08;
+            z-index: -1;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 120px 20px 80px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 0.5rem;
+            text-align: center;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--gray);
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .rules-container {
+            background: var(--glass);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-radius: 24px;
+            padding: 40px;
+            width: 100%;
+            max-width: 850px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--glass-border);
+            position: relative;
+            z-index: 2;
+        }
+
+        .logo-behind {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            top: 50%;
+            left: 0;
+            transform: translateY(-50%) translateX(-50%);
+            opacity: 0.15;
+            z-index: 1;
+        }
+
+        .rule-section {
+            margin-bottom: 35px;
+        }
+
+        .rule-section:last-child {
+            margin-bottom: 0;
+        }
+
+        .rule-section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--light);
+            border-bottom: 1px solid var(--glass-border);
+            padding-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .rule-section ul {
+            list-style-type: none;
+        }
+
+        .rule-section li {
+            margin-bottom: 16px;
+            line-height: 1.7;
+            position: relative;
+            padding-left: 28px;
+            font-weight: 400;
+        }
+
+        .rule-section li:before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 10px;
+            width: 8px;
+            height: 8px;
+            background: var(--primary);
+            border-radius: 50%;
+        }
+
+        .highlight {
+            color: var(--secondary);
+            font-weight: 600;
+        }
+
+        .important {
+            background: rgba(244, 63, 94, 0.1);
+            border-left: 4px solid var(--accent);
+            padding: 16px 20px;
+            margin: 20px 0;
+            border-radius: 0 12px 12px 0;
+        }
+
+        .btn {
+            display: inline-block;
+            background: linear-gradient(90deg, var(--secondary) 0%, var(--primary) 100%);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+            text-align: center;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(99, 102, 241, 0.4);
+        }
+
+        .btn-large {
+            font-size: 1.1rem;
+            padding: 16px 32px;
+            margin-top: 40px;
+            width: 250px;
+        }
+
+        .card {
+            background: rgba(15, 23, 42, 0.5);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 0.8rem 1rem;
+            }
+            
+            .header-title {
+                font-size: 1.2rem;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .subtitle {
+                font-size: 1rem;
+            }
+            
+            .rules-container {
+                padding: 25px;
+            }
+            
+            .rule-section h2 {
+                font-size: 1.5rem;
+            }
+            
+            .btn-large {
+                width: 100%;
+            }
+            
+            .logo-behind {
+                width: 150px;
+                height: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-left">
+            <img src="enthiran-bg.jpg" alt="Team Enthiran Logo" class="header-logo">
+            <div class="header-title">Team Enthiran</div>
+        </div>
+        <div class="header-right">
+            <a href="#register" class="btn">Register Now</a>
+        </div>
+    </header>
+
+    <img src="council.png" alt="Background Logo" class="bg-logo">
+    
+    <div class="container">
+        <h1>WebMimic</h1>
+        <p class="subtitle">Showcase your web development skills in this unique hackathon challenge</p>
+        
+        <div class="rules-container">
+            <div class="rule-section">
+                <h2>Registration & Teams</h2>
+                <div class="card">
+                    <ul>
+                        <li><span class="highlight">Solo Participation:</span> ₹80 per participant</li>
+                        <li><span class="highlight">Team of Two:</span> ₹150 per team</li>
+                        <li>Maximum team size is 2 participants</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="rule-section">
+                <h2>Competition Format</h2>
+                <div class="card">
+                    <ul>
+                        <li>Webpage will be displayed on a projector for 1 minute</li>
+                        <li>Use any web development language: HTML, CSS, JavaScript, React, PHP, etc.</li>
+                        <li>Strictly 2hrs will be given for coding from scratch.</li>
+                        <li>The final result must be displayed in a browser</li>
+                        <li>Submission Link Will be Shared 5 minutes before and will be valid for 10 minutes only.</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="rule-section">
+                <h2>Restrictions</h2>
+                <div class="card">
+                    <ul>
+                        <li class="important"><span class="highlight">NO MOBILES OR INTERNET ACCESS ALLOWED</span> during the competition</li>
+                        <li>Use offline coding platforms only (VS Code, Notepad, or any offline software)</li>
+                        <li><span class="highlight">No Cameras or Screenshots:</span> Participants are strictly prohibited from capturing any images or videos during the viewing period. Instant disqualification for violators.</li>
+                        <li><span class="highlight">No External Notes:</span> No writing, typing, or recording details during the viewing phase. Only your memory counts!</li>
+                        <li><span class="highlight">No Internet Browsing:</span> Participants must use only provided resources (pre-installed text editors, browsers, and permitted libraries). No Googling allowed.</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="rule-section">
+                <h2>Resources</h2>
+                <div class="card">
+                    <ul>
+                        <li>Assets will be provided locally</li>
+                        <li>A format will be provided to work on it.</li>
+                    </ul>
+                </div>
+            </div>
+
+        <div class="rule-section">
+            <h2>Prizes</h2>
+            <div class="card">
+                <ul>
+                    <li>1st Prize: ₹1000 🔥</li>
+                    <li>2nd Prize: ₹500 🤩</li>
+                    <li>3nd Prize: ₹300 😎</li>
+                    <li>RunnerUp 1: ₹100 ☺️</li>
+                    <li>RunnerUp 2: ₹100 ☺️</li>
+                    <li>Winning Certificates and Participation Certificates</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+        
+        <a href="#register" class="btn btn-large" id="register">Register for WebMimic</a>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const elementsToAnimate = [
+                document.querySelector('h1'),
+                document.querySelector('.subtitle'),
+                document.querySelector('.rules-container'),
+                document.querySelector('.btn-large')
+            ];
+            
+            elementsToAnimate.forEach((element, index) => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(20px)';
+                element.style.transition = `opacity 0.5s ease, transform 0.5s ease`;
+                
+                setTimeout(() => {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }, 300 + (index * 150));
+            });
+            
+            const cards = document.querySelectorAll('.card');
+            
+            function checkScroll() {
+                cards.forEach(card => {
+                    const cardTop = card.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+                    
+                    if (cardTop < windowHeight * 0.9) {
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    }
+                });
+            }
+            
+            cards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            });
+            
+            window.addEventListener('scroll', checkScroll);
+            checkScroll(); 
+            
+            const importantRules = document.querySelectorAll('.important');
+            
+            setInterval(() => {
+                importantRules.forEach(rule => {
+                    rule.style.transition = 'background 2s ease';
+                    rule.style.background = 'rgba(244, 63, 94, 0.2)';
+                    
+                    setTimeout(() => {
+                        rule.style.background = 'rgba(244, 63, 94, 0.1)';
+                    }, 1000);
+                });
+            }, 4000);
+        });
+    </script>
+</body>
+</html>
