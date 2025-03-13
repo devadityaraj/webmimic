@@ -233,6 +233,32 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
         }
 
+        footer {
+    background: rgba(15, 23, 42, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    text-align: center;
+    padding: 15px 20px;
+    font-size: 0.9rem;
+    color: var(--gray);
+    border-top: 1px solid var(--glass-border);
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+footer a {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+footer a:hover {
+    text-decoration: underline;
+    color: var(--secondary);
+}
+
+
         @media (max-width: 768px) {
             header {
                 padding: 0.8rem 1rem;
@@ -353,6 +379,11 @@
         
         <a href="https://forms.gle/bX8qqtvgKT2Qko4f6" class="btn btn-large" id="register">Register for WebMimic</a>
     </div>
+
+    <footer>
+        <p>© 2025 Team Enthiran. All rights reserved.</p>
+        <p>Contact Developer: <a href="mailto:your-adityaraj94505@gmail.com">Aditya Raj</a></p>
+    </footer>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
